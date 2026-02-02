@@ -1,160 +1,77 @@
-# ��� Microservice Template – Node.js + Express + TypeScript
+# ♠♠♠Examen de Arquitectura de Sotware
+# Microservicio de Prueba - ms-prueba
 
-Plantilla base optimizada para crear **microservicios rápidamente**, ideal para **exámenes de Arquitectura de Software**, proyectos académicos y práctica profesional.
+Microservicio de prueba para el examen segundo parcial, desarrollado con **Express**, **TypeORM** y **PostgreSQL**.
 
----
+## Tecnologías usadas
 
-## ⚡ Características
+- **Node.js** con **TypeScript**
+- **Express** - Framework de servidor
+- **TypeORM** - ORM para base de datos
+- **PostgreSQL** - Base de datos
+- **Swagger** - Documentación de la API
 
-- ✅ Estructura de carpetas predefinida
-- ✅ TypeScript configurado y optimizado
-- ✅ Express + TypeORM
-- ✅ Swagger integrado
-- ✅ Validaciones con class-validator
-- ✅ Configuración lista para MySQL o PostgreSQL
-- ✅ .gitignore y .env.example incluidos
-
----
-
-## ��� ¿Qué incluye?
-
-### ��� Archivos de configuración
-
-- `tsconfig.json` – Configuración TypeScript
-- `package.json` – Dependencias base
-- `.gitignore` – Archivos ignorados por Git
-- `.env.example` – Variables de entorno
-- `README.template.md` – Plantilla de documentación
-
----
-
-### ��� Estructura de carpetas
-
-```text
+## Estructura del proyecto
+```
 src/
-├── config/        # Configuración (database, swagger)
-├── entities/      # Entidades TypeORM
-├── dtos/          # Data Transfer Objects
-├── repositories/  # Repository Pattern
-├── services/      # Lógica de negocio
-├── controllers/   # Controladores HTTP
-├── routes/        # Definición de rutas
-├── clients/       # Clientes HTTP externos
-├── middlewares/   # Middlewares personalizados
-└── utils/         # Utilidades
-��� Uso rápido (modo examen)
-1️⃣ Clonar la plantilla
-git clone https://github.com/Wladyes/microservice-template-minimal.git mi-microservicio
-cd mi-microservicio
-rm -rf .git
-2️⃣ Actualizar package.json
-{
-  "name": "mi-microservicio",
-  "description": "Descripción de mi proyecto"
-}
-3️⃣ Instalar dependencias base
+├── app.ts                          # Configuración principal
+├── config/
+│   ├── database.ts                 # Configuración de TypeORM
+│   └── swagger.ts                  # Configuración de Swagger
+├── controllers/
+│   └── ProductoControlador.ts      # Controlador de productos
+├── dtos/
+│   └── CrearProductoDto.ts         # DTO para crear producto
+├── entities/
+│   └── Producto.entities.ts        # Entidad Producto
+├── repositories/
+│   └── ProductoRepositorio.ts      # Repositorio de productos
+├── routes/
+│   └── ProductoRutas.ts            # Rutas de productos
+└── services/
+    └── ProductoServicio.ts         # Servicio de productos
+```
+
+## Configuración
+
+1. Clonar el repositorio
+```bash
+git clone https://github.com/Jessy-sylve/prueba.git
+```
+
+2. Instalar dependencias
+```bash
 npm install
-4️⃣ Instalar driver de base de datos
-MySQL
+```
 
-npm install mysql2
-PostgreSQL
+3. Configurar variables de entorno en un archivo `.env`
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=1234
+DB_NAME=prueba-examen
+```
 
-npm install pg
-npm install -D @types/pg
-5️⃣ Configurar variables de entorno
-cp .env.example .env
-Editar .env con las credenciales.
+4. Iniciar el servidor en modo desarrollo
+```bash
+npm run dev
+```
 
-6️⃣ Crear la base de datos
--- MySQL
-CREATE DATABASE mi_database;
+## Endpoints disponibles
 
--- PostgreSQL
-CREATE DATABASE mi_database;
-7️⃣ Empezar a codificar ���
-Carpetas clave:
+| Método | Ruta         | Descripción                |
+|--------|--------------|----------------------------|
+| GET    | /productos   | Obtener todos los productos |
+| POST   | /productos   | Crear un nuevo producto     |
 
-src/entities/
+## Documentación de la API
 
-src/dtos/
+Una vez iniciado el servidor, accede a la documentación Swagger en:
+```
+http://localhost:3000/api-docs
+```
 
-src/repositories/
+## Autor
 
-src/services/
-
-src/controllers/
-
-src/routes/
-
-src/config/database.ts
-
-src/config/swagger.ts
-
-src/app.ts
-
-��� Dependencias incluidas
-Producción
-express
-
-typeorm
-
-reflect-metadata
-
-class-validator
-
-class-transformer
-
-dotenv
-
-axios
-
-swagger-jsdoc
-
-swagger-ui-express
-
-Desarrollo
-typescript
-
-ts-node
-
-nodemon
-
-@types/*
-
-⏱️ Tiempo ahorrado
-TareaSin plantillaCon plantilla
-Crear carpetas5 min0 min
-package.json 10 min1 min
-npm install3 min3 min
-tsconfig.json 5 min0 min
-.gitignore 2 min0 min
-.env.example 3 min0.5 min
-Total28 min4.5 min
-Ahorro total: 23.5 minutos
-
-��� Casos de uso
-Exámenes de Arquitectura de Software
-
-Proyectos académicos
-
-Práctica personal
-
-��� Patrones recomendados
-Repository Pattern
-
-Service Layer
-
-DTO Pattern
-
-Dependency Injection
-
-��� Personalización
-Cambiar puerto en .env:
-
-PORT=3000
-Agregar dependencias:
-
-npm install nombre-paquete
-��� Licencia
-Dominio público – uso libre con fines educativos.
+Sandy Mariño
